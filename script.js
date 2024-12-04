@@ -190,6 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
     increaseFontBtn.addEventListener('click', () => updateFontSize(fontSizeStep));
     decreaseFontBtn.addEventListener('click', () => updateFontSize(-fontSizeStep));
 
+    // Emoji Slider Logic
+    const emojiSlider = document.getElementById('emoji-slider');
+    const emojiUrls = [
+        'https://openmoji.org/data/color/svg/1F622.svg', // Crying face
+        'https://openmoji.org/data/color/svg/1F641.svg', // Slightly frowning face
+        'https://openmoji.org/data/color/svg/1F610.svg', // Neutral face
+        'https://openmoji.org/data/color/svg/1F642.svg', // Slightly smiling face
+        'https://openmoji.org/data/color/svg/1F604.svg'  // Smiling face with open mouth
+    ];
+
+    emojiSlider.addEventListener('input', (event) => {
+        const value = event.target.value;
+        emojiSlider.style.setProperty('--emoji-url', `url(${emojiUrls[value - 1]})`);
+    });
+
     // Mobile Menu Functionality
     const mobileNav = document.querySelector('.mobile-nav');
     let isMenuOpen = false;
